@@ -6,7 +6,8 @@ on:
             - main
 
 jobs:
-    build-test-analyze:
+    
+    lint:
         runs-on: ubuntu-latest
 
         steps:
@@ -16,8 +17,8 @@ jobs:
             - name: Set up Node.js
               uses: actions/setup-node@v4
               with:
-                 node-version: '20'
-                 cache: 'npm'
+                node-version: '20'
+                cache: 'npm'
 
             - name: Install dependencies
               run: npm ci
@@ -25,8 +26,42 @@ jobs:
             - name: Run ESLint
               run: npm run lint
 
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+                cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+
             - name: Run unit tests
               run: npm test
 
-            - name: Run npm audit
+
+    security-scan:
+        runs-on: ubuntu-latest
+
+        steps: 
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+                cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run security scan
               run: npm audit --audit-level=high
