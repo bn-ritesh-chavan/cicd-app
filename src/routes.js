@@ -10,4 +10,8 @@ router.get('/hello', (req,res) =>{
     res.json({message: "This app is for cicd purpose"})
 })
 
+router.get('/error', (req, res) => {
+    res.json({message: "This is an error endpoint"})
+})
+
 module.exports = router
