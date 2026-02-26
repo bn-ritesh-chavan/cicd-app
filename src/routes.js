@@ -12,6 +12,6 @@ router.get('/hello', (req,res) =>{
 
 router.get('/error', (req, res) => {
     res.json({message: "This is an error endpoint"})
-}
+})
 
 module.exports = router
