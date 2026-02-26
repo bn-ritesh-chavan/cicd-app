@@ -1,5 +1,7 @@
 name: CI - Quality and Security Gate
 
+# on merge to main run cd
+
 on:
     pull_request:
         branches:
