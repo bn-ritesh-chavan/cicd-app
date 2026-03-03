@@ -18,4 +18,8 @@ router.get('/test', (req, res) => {
     res.json({message: "This is a test endpoint"})
 })
 
+router.get('/status' , (req, res) =>{
+    res.json({message: "This is a status endpoint"})
+})
+
 module.exports = router
