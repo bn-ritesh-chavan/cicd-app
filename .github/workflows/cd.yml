@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [infra-updated]
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-app
